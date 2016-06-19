@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="manga.resource">
+    <file>icon/logo-large.png</file>
+    <file>icon/logo-small.png</file>
+    <file>icon/close-small.png</file>
+    <file>icon/download-small.png</file>
+    <file>icon/next-small.png</file>
+    <file>icon/preview-small.png</file>
+    <file>icon/search-small.png</file>
+  </qresource>
+</RCC>
