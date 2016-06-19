@@ -1,4 +1,5 @@
 from design import *
+from PyQt4 import QtSql as dbase
 import design
 import sys
 
@@ -27,18 +28,23 @@ class Mangareader(QtGui.QMainWindow, design.Ui_MainWindow):
         self.pushButton_4.clicked.connect(self.nextNext)
 
     def nextNext(self):
-        self.label.setText("Next Chapter")
-        self.label_2.setText("Next")
+        nextImage = "developer/next.png"
+        self.label.setPixmap(QtGui.QPixmap(nextImage))
+        self.label_2.setText("Page 2")
 
     def preview(self):
         self.pushButton_3.clicked.connect(self.prevPreview)
 
     def prevPreview(self):
-        self.label.setText("Preview Chapter")
-        self.label_2.setText("Preview")
+        previewImage = "developer/preview.jpg"
+        self.label.setPixmap(QtGui.QPixmap(previewImage))
+        self.label_2.setText("Page 1")
+
+#---------------->> Database Connect Session <<--------------------#
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
     Application = Mangareader()
+
     Application.show()
     sys.exit(app.exec_())
