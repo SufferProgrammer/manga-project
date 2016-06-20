@@ -7,38 +7,28 @@ class Mangareader(QtGui.QMainWindow, design.Ui_MainWindow):
     def __init__(self):
         super(Mangareader, self).__init__()
         self.setupUi(self)
-        self.searchmanga()
-        self.downloadmanga()
-        self.preview()
-        self.next()
+        self.viewerSetting()
+        self.actionMenu()
 
-    def searchmanga(self):
-        self.pushButton_2.clicked.connect(self.search)
+    def zoomSetting(self, sizeSize):
+        self.label.resize(self.scaleFactor * self.label.pixmap().size())
+        self.scaleFactor *= sizeSize
 
-    def search(self):
-        print("Searching Manga...")
+    def viewerSetting(self):
+        self.label.setScaledContents(True)
+        self.scaleFactor = 1.0
+        self.label.setPixmap(QtGui.QPixmap('developer/preview.jpg'))
 
-    def downloadmanga(self):
-        self.pushButton.clicked.connect(self.download)
+    def actionMenu(self):
+        self.actionZoom_In.triggered.connect(self.zoomin)
+        self.actionExit.triggered.connect(self.exit)
+        #self.actionFull_Screen.triggeredc.connect(self.fullscreen)
 
-    def download(self):
-        print("Downloading Manga...")
+    def zoomin(self):
+        self.zoomSetting(0.25)
 
-    def next(self):
-        self.pushButton_4.clicked.connect(self.nextNext)
-
-    def nextNext(self):
-        nextImage = "developer/next.png"
-        self.label.setPixmap(QtGui.QPixmap(nextImage))
-        self.label_2.setText("Page 2")
-
-    def preview(self):
-        self.pushButton_3.clicked.connect(self.prevPreview)
-
-    def prevPreview(self):
-        previewImage = "developer/preview.jpg"
-        self.label.setPixmap(QtGui.QPixmap(previewImage))
-        self.label_2.setText("Page 1")
+    def exit(self):
+        sys.exit()
 
 #---------------->> Database Connect Session <<--------------------#
 
